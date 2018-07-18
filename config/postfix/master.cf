@@ -1,0 +1,4 @@
+smtp      inet  n       -       y       -       -       smtpd	-o content_filter=filterb:dummy
+pickup    unix  n       -       y       60      1       pickup -o content_filter=filterb:dummy
+filterb      unix  -       n       n       -       -       pipe
+  flags=Rq user=mailfilter argv=/home/mailfilter/postfixhook.py -f ${sender} -- ${recipient}
